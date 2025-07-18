@@ -262,3 +262,10 @@ crashlytics-build.properties
 *.log
 *.userprefs
 
+# Cluster output
+*.out
+*.err
+
+# Shell scripts
+*.sh
+
