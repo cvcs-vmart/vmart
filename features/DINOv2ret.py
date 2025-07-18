@@ -3,7 +3,7 @@ import os
 
 import cv2
 
-# ⚠️ Soluzione temporanea per ignorare il conflitto tra runtime OpenMP
+# Soluzione temporanea per ignorare il conflitto tra runtime OpenMP
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
 import torch
