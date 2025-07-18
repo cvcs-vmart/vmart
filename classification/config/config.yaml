@@ -1,0 +1,45 @@
+useCudnn: True
+
+train:
+  epochs: 200
+  batch_size: 1
+  learning_rate_head: 0.001
+  learning_rate_model: 0.001
+  weight_decay: 0.00001 # 1e-5
+  patience: 10
+  n_workers: 4
+  n_epochs_save: 10
+  save_weights: True
+  finetune: True # True if finetuning, else False
+  warmup_epochs_for_finetune: 10
+  head_zero_steps: 5  # number of steps with zero LR for heads
+  oversampling: True
+  resume:
+    checkpoint: False # False if not resuming, else path
+    style: "weights/best/vmart_resnet_weights_style_head.pth" # None if not resuming, else path
+    genre: "weights/best/vmart_resnet_weights_genre_head.pth" # None if not resuming, else path
+    model: "weights/best/vmart_resnet_weights_model.pth"
+    optimizer: "weights/best/optimizer.pth"
+    split_indices: "splits/split_indices.json" # path to json with train/test indices
+    top_vLoss: 0.0 # top validation loss to resume training from
+
+inference:
+  weight_path_style: "weights/best/vmart_resnet_weights_style_head.pth"
+  weight_path_genre: "weights/best/vmart_resnet_weights_genre_head.pth"
+  weight_path_model: "weights/best/vmart_resnet_weights_model.pth"
+
+server:
+  host: "0.0.0.0"
+  port: 5001
+  production: True
+
+dataset:
+  path: /work/cvcs2025/bilardello_melis_prato/wikiart
+  csv: /work/cvcs2025/bilardello_melis_prato/wikiart/wclasses.csv
+
+wandb:
+  enabled: True
+  project: VMART-ResNet
+  entity: bilardellodavides-vmart
+  name: "vmart_resnet152"
+

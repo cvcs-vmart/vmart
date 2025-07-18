@@ -1,0 +1,15 @@
+meta {
+  name: predict
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:5000/predict
+  body: multipartForm
+  auth: inherit
+}
+
+body:multipart-form {
+  file: @file(C:\Users\bilar\Desktop\vmart\resnet\test\a.y.-jackson_algoma-in-november-1935.jpg)
+}

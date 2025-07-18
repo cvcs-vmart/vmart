@@ -283,3 +283,6 @@ detection/yolo11l.pt
 detection/yolo11n.pt
 detection/yolo11s.pt
 detection/weights/best-old.pt
+classification/.gitattributes
+classification/README.md
+/classification/wandb
