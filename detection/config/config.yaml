@@ -1,0 +1,58 @@
+experiment: 'd1-dropout'
+
+train:
+  model: 'yolo11n'
+
+  data: '/work/cvcs2025/bilardello_melis_prato/detection1/data.yaml'
+  imgsz: 640
+  epochs: 300
+  batch: 32
+  name: ''
+  project: '/homes/fmelis/yolo_results/yolo11n'
+  device: 0 # TODO: questo deve essere 0 per prendere la prima gpu
+  patience: 25
+  workers: 4
+  optimizer: 'auto' # [SGG, Adam, AdamW, NAdam, RMSprop, RAdam] oppure 'auto'
+  seed: 42
+  multi_scale: False
+  lr0: 0.001
+  lrf: 0.01
+  dropout: 0.4
+
+  warmup_epochs: 10
+  #cos_lr: True
+
+  # augmentation
+  #hsv_s : 0.02 # default: 0.015
+  #scale : 0.6 # default: 0.5
+  #perspective : 0.0005 # default: 0.0
+  #mosaic : 0.0 # default: 1.0
+
+
+
+  # logs
+  plots: True
+  save_period: 20
+  save: True
+  verbose: True
+
+inference:
+  imgsz: 640
+  model: 'yolo11n'
+  weights: 'C:\Users\fede\Desktop\CVCS\_PROGETTO\VMART-ObjectDetection\weights\d2-dropout-best.pt'
+  #weights: '/homes/fmelis/VMART-ObjectDetection/weights/d2-dropout-best.pt'
+  conf: 0.80
+  verbose: False
+  save_txt: False
+  show: False
+  save: False
+  # altre opzioni
+  visualize: False
+  show_labels: False
+  show_conf: False
+  line_width: 2
+  half: True # use FP16 half-precision inference
+
+wandb: True
+entity: 'bilardellodavides-vmart'
+

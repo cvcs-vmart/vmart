@@ -269,3 +269,17 @@ crashlytics-build.properties
 # Shell scripts
 *.sh
 
+detection/config/secrets.yaml
+detection/config/abl1.yaml
+detection/config/abl2.yaml
+detection/config/abl3.yaml
+detection/config/abl4.yaml
+detection/config/abl5.yaml
+detection/config/abl6.yaml
+detection/config/abl7.yaml
+detection/config/config2.yaml
+detection/config/config3.yaml
+detection/yolo11l.pt
+detection/yolo11n.pt
+detection/yolo11s.pt
+detection/weights/best-old.pt
