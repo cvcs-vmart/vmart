@@ -78,6 +78,7 @@ def predict():
 
     original_path = f'logs/{pid}/{count + 1}_original.jpg'
     detection_path = f'logs/{pid}/{count + 1}_detection.jpg'
+    extraction_path = f'logs/{pid}/{count + 1}_extracted.jpg'
 
     cv2.imwrite(original_path, img)
     result[0].save(detection_path)
@@ -98,10 +99,18 @@ def predict():
                 # aggiungi la bbox alla lista dei risultati
                 bboxs_res.append(bboxs[i])
 
-    bboxs_res = json.dumps(bboxs)
+    # draw contours and save
+    img_c = img.copy()
+    for bbox in bboxs_res:
+        x1, y1, x2, y2 = map(int, bbox)
+        cv2.rectangle(img_c, (x1, y1), (x2, y2), (0, 255, 0), 2)
+
+    cv2.imwrite(extraction_path, img_c)
+
+    bboxs_res_j = json.dumps(bboxs_res)
 
     # manda i dati al servizio di trasformazione
-    Thread(target=send_to_transform_service, args=(file_bytes, bboxs_res, position)).start()
+    Thread(target=send_to_transform_service, args=(file_bytes, bboxs_res_j, position)).start()
 
     return jsonify({"status": "OK"})
 
@@ -110,7 +119,7 @@ def load_model():
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", type=str, help="Path to YAML config file", default='../config/config.yaml')
     parser.add_argument("--useCUDNN", type=str, help="Use cuDNN", default='True')
-    parser.add_argument("--conf", type=int, help="YOLO confidence", default=0.9)
+    parser.add_argument("--conf", type=float, help="YOLO confidence", default=0.9)
     args = parser.parse_args()
 
     if args.useCUDNN != "True":

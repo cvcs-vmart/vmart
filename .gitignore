@@ -287,3 +287,6 @@ classification/.gitattributes
 classification/README.md
 /classification/wandb
 features/README.md
+/detection2/model/runs
+/detection/model/runs
+/detection/runs

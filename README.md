@@ -1,8 +1,36 @@
-# vmart
+# VMART (Visual Museum Augmented Reality Tour)
 
-TODO list:
-* Aggiungi un Readme completo che ti spieghi cosa è il progetto, come avviarlo etc (mettere un piccolo schema dei servizi?)
-* In qualche modo linka i pesi della resnet, e tutto il resto per poter far avviare tutto il sistema
-* Carica il paper
-* Metti publica anche l'app per il visore
-* Cambia il nome di test.py
+## Usage
+
+You can use VMART if you have a Meta Quest 3, and the services MUST be running on AImagelab SRV.
+
+The unity app can be found here: [Unity App](https://github.com/cvcs-vmart/Unity-app)
+
+## Installation
+1. Clone the repositoty
+
+2. Create a virtual environment and install the requirements
+
+3. Run all the servers
+   - /server/server.py 
+   - /detection/model/inference.py
+   - /transformation/transform.py
+   - /features/DINOv2fex.py
+   - /features/DINOv2ret.py
+   - /classification/server.py
+
+NB: there are some config files that contains some paths that you need to change according to your local setup.
+
+- detection/config/config.yaml
+- classification/config/config.yaml
+
+
+### Other Requirements
+You will need to download the weigths for the classification and the index file for retrieval.
+
+- Classification weights: [Download Link](https://escanortargaryen.dev/vmart/efficientnet-weights/)
+
+- Index file for retrieval: [Download Link](https://escanortargaryen.dev/vmart/index/)
+
+
+NB: In order to perform correctly the retrieval, you need to have access to "/work/cvcs2025/bilardello_melis_prato/wikiart" directory inside the cluster.
