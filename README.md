@@ -45,5 +45,5 @@ Long video as we test it in the Galleria Estense: https://youtu.be/lxSlbR4vHUM
 ## Special thanks
 Special thanks to:
 - our professors R. Cucchiara and L. Baraldi.
-- E. Turri Phd. at UNIMORE
+- E. Turri Phd. @ UNIMORE
 - Galleria Estense
